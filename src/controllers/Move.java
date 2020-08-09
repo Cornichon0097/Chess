@@ -16,11 +16,14 @@ public class Move implements MouseListener
 
   private Cell piece;
 
+  private Boolean whiteTurn;
+
 
   public Move(Board game)
   {
     this.game = game;
     this.piece = null;
+    this.whiteTurn = true;
   }
 
 
@@ -34,7 +37,15 @@ public class Move implements MouseListener
     {
       if (associated.isTaken())
       {
-        this.piece = clicked;
+        if ((this.whiteTurn == true) && (associated.getPiece().getColor() == "white"))
+        {
+          this.piece = clicked;
+        }
+
+        if ((this.whiteTurn == false) && (associated.getPiece().getColor() == "black"))
+        {
+          this.piece = clicked;
+        }
       }
     }
     else
@@ -53,6 +64,7 @@ public class Move implements MouseListener
         this.piece.getSquare().getPiece().move(associated);
         clicked.repaint();
         piece.repaint();
+        this.whiteTurn = !this.whiteTurn;
       }
 
       this.piece = null;
