@@ -14,6 +14,7 @@ public class Rook extends Chessman
   }
 
 
+
   @Override
   public boolean canMoveTo(Square newPosition, Board game)
   {
@@ -58,6 +59,7 @@ public class Rook extends Chessman
         return false;
       }
     }
+
 
     return true;
   }
