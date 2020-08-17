@@ -25,10 +25,12 @@ public class Cell extends JComponent
   }
 
 
+
   @Override
   public void paintComponent(Graphics g)
   {
     Graphics g2 = g.create();
+
 
     if (this.isOpaque())
     {
@@ -55,6 +57,8 @@ public class Cell extends JComponent
       g2.drawImage(this.image, 0, 0, this);
     }
   }
+
+
 
   public Square getSquare()
   {

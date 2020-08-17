@@ -13,6 +13,7 @@ public abstract class Window extends JFrame
   public Window(int x, int y, int width, int heigth, String title)
   {
     super(title);
+
     this.setLocation(x, y);
     this.setSize(width, heigth);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

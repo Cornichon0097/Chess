@@ -20,6 +20,7 @@ public class Chess extends Window
     Board board = new Board();
     Move mover = new Move(board);
 
+
     this.display.setLayout(new GridLayout(8, 8));
 
     for (int i = 0; i < 8; i++)
