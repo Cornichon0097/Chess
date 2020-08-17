@@ -19,25 +19,34 @@ public class Square
   }
 
 
+
   public byte getRank()
   {
     return this.rank;
   }
+
+
 
   public byte getFile()
   {
     return this.file;
   }
 
+
+
   public void setPiece(Chessman piece)
   {
     this.piece = piece;
   }
 
+
+
   public Chessman getPiece()
   {
     return this.piece;
   }
+
+
 
   public boolean isTaken()
   {

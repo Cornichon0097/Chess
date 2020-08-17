@@ -51,6 +51,7 @@ public class Board
   }
 
 
+
   public void setPieces(int i, int j, String color)
   {
     if ((j == 0) || (j == 7))
@@ -78,6 +79,8 @@ public class Board
       this.board[i][j].setPiece(new King(this.board[i][j], color));
     }
   }
+
+
 
   public Square getSquare(int i, int j)
   {

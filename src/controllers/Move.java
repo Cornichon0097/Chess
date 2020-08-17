@@ -16,7 +16,7 @@ public class Move implements MouseListener
 
   private Cell piece;
 
-  private Boolean whiteTurn;
+  private boolean whiteTurn;
 
 
   public Move(Board game)
@@ -27,11 +27,13 @@ public class Move implements MouseListener
   }
 
 
+
   @Override
   public void mouseClicked(MouseEvent e)
   {
     Cell clicked = (Cell) e.getComponent();
     Square associated = clicked.getSquare();
+
 
     if (this.piece == null)
     {
@@ -71,14 +73,22 @@ public class Move implements MouseListener
     }
   }
 
+
+
   @Override
   public void mouseEntered(MouseEvent e) {}
+
+
 
   @Override
   public void mouseExited(MouseEvent e) {}
 
+
+
   @Override
   public void mousePressed(MouseEvent e) {}
+
+
 
   @Override
   public void mouseReleased(MouseEvent e) {}
