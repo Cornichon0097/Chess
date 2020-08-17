@@ -64,7 +64,6 @@ public class Pawn extends Chessman
 
       if (!game.getSquare(newPosition.getRank(), newPosition.getFile()).isTaken())
       {
-
         return false;
       }
     }
