@@ -10,15 +10,15 @@ public abstract class Chessman
 
   protected String name;
 
-  protected boolean haveMove;
+  protected boolean haveModed;
 
 
   public Chessman(Square position, String color, String name)
   {
-    this.position = position;
-    this.color = color;
-    this.name = name;
-    this.haveMove = false;
+    this.position  = position;
+    this.color     = color;
+    this.name      = name;
+    this.haveModed = false;
   }
 
 
@@ -48,8 +48,9 @@ public abstract class Chessman
   {
     newPosition.setPiece(this);
     this.position.setPiece(null);
-    this.position = newPosition;
-    this.haveMove = true;
+
+    this.position  = newPosition;
+    this.haveModed = true;
   }
 
 

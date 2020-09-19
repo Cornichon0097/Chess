@@ -1,14 +1,27 @@
 package models;
 
+import models.Board;
+import models.Square;
 import models.Chessman;
 
 
 public class Pawn extends Chessman
 {
 
+  public static final String NAME = "pawn";
+
+  public static final int BLACK_ROW = 1;
+
+  public static final int WHITE_ROW = 6;
+
+  private int difference;
+
+
   public Pawn(Square position, String color)
   {
-    super(position, color, "pawn");
+    super(position, color, Pawn.NAME);
+
+    this.difference = 0;
   }
 
 
@@ -23,9 +36,6 @@ public class Pawn extends Chessman
   @Override
   public boolean canMoveTo(Square newPosition, Board game)
   {
-    int difference;
-
-
     if (this.color == "white")
     {
       if (this.position.getRank() <= newPosition.getRank())
@@ -33,7 +43,7 @@ public class Pawn extends Chessman
         return false;
       }
 
-      difference = this.position.getRank() - newPosition.getRank();
+      this.difference = this.position.getRank() - newPosition.getRank();
     }
     else /* if (this.color == "black") */
     {
@@ -42,27 +52,32 @@ public class Pawn extends Chessman
         return false;
       }
 
-      difference = newPosition.getRank() - this.position.getRank();
+      this.difference = newPosition.getRank() - this.position.getRank();
     }
 
-    if (difference > 2)
+    if (this.difference > 2)
     {
       return false;
     }
 
-    if ((difference > 1) && (this.haveMove))
+    if ((this.difference > 1) && (this.haveModed))
     {
       return false;
     }
 
     if (this.position.getFile() != newPosition.getFile())
     {
-      if (difference != 1)
+      if (this.difference != 1)
       {
         return false;
       }
 
-      if (!game.getSquare(newPosition.getRank(), newPosition.getFile()).isTaken())
+      if (!game.getSquare(newPosition.getRank(), newPosition.getFile()).isTaken()
+          && !(game.getSquare(this.position.getRank(), newPosition.getFile()).isTaken()
+               && game.getSquare(this.position.getRank(), newPosition.getFile())
+                  .getPiece().getName() == Pawn.NAME
+               && game.getSquare(this.position.getRank(), newPosition.getFile())
+                  .getPiece() == game.getLastMovedPiece()))
       {
         return false;
       }

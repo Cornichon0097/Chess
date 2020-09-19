@@ -5,7 +5,6 @@ import models.Square;
 import javax.swing.JComponent;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Color;
 
@@ -14,8 +13,6 @@ public class Cell extends JComponent
 {
 
   private Square square;
-
-  private Image image;
 
 
   public Cell(Square square)
@@ -51,10 +48,9 @@ public class Cell extends JComponent
 
     if (this.square.isTaken())
     {
-      this.image = Toolkit.getDefaultToolkit().getImage("img/chessmen/"
+      g2.drawImage(Toolkit.getDefaultToolkit().getImage("../img/chessmen/"
                    + this.square.getPiece().getColor() + "/"
-                   + this.square.getPiece().getName() + ".png");
-      g2.drawImage(this.image, 0, 0, this);
+                   + this.square.getPiece().getName() + ".png"), 0, 0, this);
     }
   }
 

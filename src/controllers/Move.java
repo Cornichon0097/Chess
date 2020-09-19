@@ -21,17 +21,17 @@ public class Move implements MouseListener
 
   public Move(Board game)
   {
-    this.game = game;
-    this.piece = null;
+    this.game      = game;
+    this.piece     = null;
     this.whiteTurn = true;
   }
 
 
 
   @Override
-  public void mouseClicked(MouseEvent e)
+  public void mouseClicked(MouseEvent event)
   {
-    Cell clicked = (Cell) e.getComponent();
+    Cell clicked      = (Cell) event.getComponent();
     Square associated = clicked.getSquare();
 
 
@@ -52,20 +52,18 @@ public class Move implements MouseListener
     }
     else
     {
-      if (associated.isTaken())
+      if (associated.isTaken() && (this.piece.getSquare().getPiece().getColor()
+                                   == associated.getPiece().getColor()))
       {
-        if (this.piece.getSquare().getPiece().getColor()
-            == associated.getPiece().getColor())
-          {
-            return;
-          }
+        return;
       }
 
       if (this.piece.getSquare().getPiece().canMoveTo(associated, this.game))
       {
         this.piece.getSquare().getPiece().move(associated);
+        this.game.setLastMovedPiece(this.piece.getSquare().getPiece());
+        this.piece.repaint();
         clicked.repaint();
-        piece.repaint();
         this.whiteTurn = !this.whiteTurn;
       }
 
@@ -76,20 +74,14 @@ public class Move implements MouseListener
 
 
   @Override
-  public void mouseEntered(MouseEvent e) {}
-
-
+  public void mouseEntered(MouseEvent event) {}
 
   @Override
-  public void mouseExited(MouseEvent e) {}
-
-
+  public void mouseExited(MouseEvent event) {}
 
   @Override
-  public void mousePressed(MouseEvent e) {}
-
-
+  public void mousePressed(MouseEvent event) {}
 
   @Override
-  public void mouseReleased(MouseEvent e) {}
+  public void mouseReleased(MouseEvent event) {}
 }

@@ -13,19 +13,27 @@ import java.awt.GridLayout;
 public class Chess extends Window
 {
 
+  private static final int X = 100;
+
+  private static final int Y = 50;
+
+  private static final int WIDTH = 360;
+
+  private static final int HEIGHT = 380;
+
+
   public Chess()
   {
-    super(100, 50, 360, 380, "Chess");
+    super(Chess.X, Chess.Y, Chess.WIDTH, Chess.HEIGHT, "Chess");
 
     Board board = new Board();
-    Move mover = new Move(board);
+    Move  mover = new Move(board);
 
+    this.display.setLayout(new GridLayout(Board.ROWS, Board.COLUMNS));
 
-    this.display.setLayout(new GridLayout(8, 8));
-
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < Board.ROWS; i++)
     {
-      for (int j = 0; j < 8; j++)
+      for (int j = 0; j < Board.COLUMNS; j++)
       {
         Cell cell = new Cell(board.getSquare(i, j));
         cell.addMouseListener(mover);

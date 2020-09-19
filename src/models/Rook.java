@@ -8,6 +8,11 @@ import models.Chessman;
 public class Rook extends Chessman
 {
 
+  public static final int LEFT_ROW = 0;
+
+  public static final int RIGHT_ROW = 7;
+
+
   public Rook(Square position, String color)
   {
     super(position, color, "rook");
