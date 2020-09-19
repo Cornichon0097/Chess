@@ -77,7 +77,8 @@ public class Pawn extends Chessman
                && game.getSquare(this.position.getRank(), newPosition.getFile())
                   .getPiece().getName() == Pawn.NAME
                && game.getSquare(this.position.getRank(), newPosition.getFile())
-                  .getPiece() == game.getLastMovedPiece()))
+                  .getPiece() == game.getLastMovedPiece())
+               && ((Pawn) game.getLastMovedPiece()).getDifference() == 2);
       {
         return false;
       }

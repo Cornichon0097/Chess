@@ -61,7 +61,7 @@ public class Move implements MouseListener
       if (this.piece.getSquare().getPiece().canMoveTo(associated, this.game))
       {
         this.piece.getSquare().getPiece().move(associated);
-        this.game.setLastMovedPiece(this.piece.getSquare().getPiece());
+        this.game.setLastMovedPiece(associated.getPiece());
         this.piece.repaint();
         clicked.repaint();
         this.whiteTurn = !this.whiteTurn;
